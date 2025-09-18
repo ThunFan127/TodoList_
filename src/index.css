@@ -1,0 +1,275 @@
+/* Nền gradient */
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.gradient-custom {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: radial-gradient(50% 123.47% at 50% 50%, #00ff94 0%, #720059 100%),
+    linear-gradient(121.28deg, #669600 0%, #ff0000 100%),
+    linear-gradient(360deg, #0029ff 0%, #8fff00 100%),
+    radial-gradient(100% 164.72% at 100% 100%, #6100ff 0%, #00ff57 100%),
+    radial-gradient(100% 148.07% at 0% 0%, #fff500 0%, #51d500 100%);
+  background-blend-mode: screen, color-dodge, overlay, difference, normal;
+}
+
+/* App chính */
+
+.app {
+  width: 900px;
+  background: #fff;
+  padding: 32px 40px 32px 40px;
+  border-radius: 16px;
+  box-shadow: 0 6px 32px 0 rgba(0, 0, 0, 0.10);
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.app {
+  width: 900px;
+  background: #fff;
+  padding: 32px 40px 32px 40px;
+  border-radius: 16px;
+  box-shadow: 0 6px 32px 0 rgba(0, 0, 0, 0.10);
+}
+
+.todo-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+
+.input-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+}
+
+.input-wrapper input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  background: transparent;
+  padding: 8px 0 4px 0;
+  transition: border-color 0.2s;
+  color: #333;
+}
+
+/* Removed empty .input-wrapper input:focus ruleset */
+
+.input-wrapper label {
+  position: absolute;
+  left: 0;
+  top: 16px;
+  font-size: 16px;
+  color: #909090;
+  pointer-events: none;
+  transition: 0.2s cubic-bezier(.4,0,.2,1);
+}
+
+.input-wrapper input:focus + label,
+.input-wrapper.filled label,
+.input-wrapper label.shrink {
+  top: -8px;
+  left: 0;
+  font-size: 12px;
+  color: #4285f4;
+  background: #fff;
+  padding: 0 2px;
+}
+
+.todo-form button {
+  padding: 12px 28px;
+  border: none;
+  background: #26b6d4;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+  box-shadow: 0 2px 8px 0 rgba(38, 182, 212, 0.10);
+}
+
+.todo-form button:hover {
+  background: #1a9bb3;
+}
+
+.tabs {
+  display: flex;
+  justify-content: flex-start;
+  gap: 32px;
+  margin-bottom: 24px;
+  border-bottom: none;
+}
+
+.tabs a {
+  padding: 10px 0;
+  text-decoration: none;
+  color: #888;
+  font-size: 13px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.tabs a.active {
+  border-bottom: 2px solid #26b6d4;
+  color: #26b6d4;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f7f9fa;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  padding: 6px 10px 6px 10px;
+  box-shadow: none;
+  border: none;
+  min-height: 0;
+}
+
+.todo-item-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+
+.todo-item-actions,
+.d-flex {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.todo-item input[type="checkbox"] {
+  margin-right: 12px;
+  width: 22px;
+  height: 22px;
+  accent-color: #2563eb;
+  border-radius: 4px;
+}
+
+.todo-item span {
+  font-size: 16px;
+  color: #333;
+  font-weight: 400;
+  text-align: left;
+  flex: 1;
+  padding-left: 0;
+}
+
+.todo-item span.completed {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+/* Icon chỉnh sửa và xóa sử dụng FontAwesome */
+.fa-pen-to-square.text-warning {
+  color: #f5b400 !important;
+  font-size: 22px;
+}
+
+.fa-trash-can.text-danger {
+  color: #ef5350 !important;
+  font-size: 22px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 1000;
+  padding-top: 60px;
+}
+
+.modal-custom {
+  background-color: #fff;
+  padding: 16px 18px 12px 18px;
+  min-height: unset;
+  width: 400px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 6px 32px 0 rgba(0, 0, 0, 0.10);
+  margin-top: 0;
+}
+
+.modal-header-custom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.modal-header-custom h5 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.modal-body-custom {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 4px;
+}
+
+.modal-footer-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.btn {
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-light {
+  background: #f7fafd;
+  color: #333;
+  border: 1px solid #e0e0e0;
+}
+
+.btn-danger {
+  background: #ef5350;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background: #d32f2f;
+}
