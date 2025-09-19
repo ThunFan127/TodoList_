@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import TodoForm from "./components/TodoForm";
 import TodoTabs from "./components/TodoTabs";
-import AllPage from "./pages/AllPage";
-import CompletedPage from "./pages/CompletedPage";
-import UncompletedPage from "./pages/UncompletedPage";
+import TodoListPage from "./pages/TodoListPage";
 import ConfirmModal from "./components/ConfirmModal";
 
 export default function App() {
@@ -93,33 +91,36 @@ export default function App() {
                     <Route
                         path="/"
                         element={
-                            <AllPage
+                            <TodoListPage
                                 todos={todos}
                                 onToggle={toggleTodo}
                                 onEdit={startEditTodo}
                                 onDelete={confirmDelete}
+                                filterType="all"
                             />
                         }
                     />
                     <Route
                         path="/completed"
                         element={
-                            <CompletedPage
+                            <TodoListPage
                                 todos={todos}
                                 onToggle={toggleTodo}
                                 onEdit={startEditTodo}
                                 onDelete={confirmDelete}
+                                filterType="completed"
                             />
                         }
                     />
                     <Route
                         path="/uncompleted"
                         element={
-                            <UncompletedPage
+                            <TodoListPage
                                 todos={todos}
                                 onToggle={toggleTodo}
                                 onEdit={startEditTodo}
                                 onDelete={confirmDelete}
+                                filterType="uncompleted"
                             />
                         }
                     />
