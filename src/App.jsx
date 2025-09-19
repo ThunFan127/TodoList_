@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
 import TodoForm from "./components/TodoForm";
 import TodoTabs from "./components/TodoTabs";
 import TodoListPage from "./pages/TodoListPage";
@@ -18,6 +17,9 @@ export default function App() {
     // Modal xác nhận xóa
     const [showModal, setShowModal] = useState(false);
     const [deleteId, setDeleteId] = useState(null);
+
+    // Tab nội bộ
+    const [currentTab, setCurrentTab] = useState("all");
 
     // Lưu todos vào localStorage khi thay đổi
     useEffect(() => {
@@ -69,6 +71,14 @@ export default function App() {
         setDeleteId(null);
     };
 
+    // Lọc todos theo tab
+    let filteredTodos = todos;
+    if (currentTab === "completed") {
+        filteredTodos = todos.filter(t => t.completed);
+    } else if (currentTab === "uncompleted") {
+        filteredTodos = todos.filter(t => !t.completed);
+    }
+
     return (
         <div className="gradient-custom">
             <div className="app">
@@ -84,47 +94,16 @@ export default function App() {
                 />
 
                 {/* Tabs điều hướng */}
-                <TodoTabs />
+                <TodoTabs currentTab={currentTab} setCurrentTab={setCurrentTab} />
 
-                {/* Các page */}
-                <Routes>
-                    <Route
-                        path="/"
-                        element={
-                            <TodoListPage
-                                todos={todos}
-                                onToggle={toggleTodo}
-                                onEdit={startEditTodo}
-                                onDelete={confirmDelete}
-                                filterType="all"
-                            />
-                        }
-                    />
-                    <Route
-                        path="/completed"
-                        element={
-                            <TodoListPage
-                                todos={todos}
-                                onToggle={toggleTodo}
-                                onEdit={startEditTodo}
-                                onDelete={confirmDelete}
-                                filterType="completed"
-                            />
-                        }
-                    />
-                    <Route
-                        path="/uncompleted"
-                        element={
-                            <TodoListPage
-                                todos={todos}
-                                onToggle={toggleTodo}
-                                onEdit={startEditTodo}
-                                onDelete={confirmDelete}
-                                filterType="uncompleted"
-                            />
-                        }
-                    />
-                </Routes>
+                {/* Danh sách nhiệm vụ */}
+                <TodoListPage
+                    todos={filteredTodos}
+                    onToggle={toggleTodo}
+                    onEdit={startEditTodo}
+                    onDelete={confirmDelete}
+                    filterType={currentTab}
+                />
 
                 {/* Modal xác nhận xóa */}
                 <ConfirmModal

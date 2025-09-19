@@ -1,23 +1,56 @@
-import { NavLink } from "react-router-dom";
-
-export default function TodoTabs() {
+export default function TodoTabs({ currentTab, setCurrentTab }) {
   return (
     <div className="tabs">
-      <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
+      <button
+        className={currentTab === "all" ? "active" : ""}
+        onClick={() => setCurrentTab("all")}
+        type="button"
+        style={{
+          background: "none",
+          border: "none",
+          padding: 0,
+          marginRight: 32,
+          fontSize: 13,
+          fontWeight: 500,
+          color: currentTab === "all" ? "#26b6d4" : "#888",
+          cursor: "pointer",
+        }}
+      >
         TẤT CẢ
-      </NavLink>
-      <NavLink
-        to="/completed"
-        className={({ isActive }) => (isActive ? "active" : "")}
+      </button>
+      <button
+        className={currentTab === "completed" ? "active" : ""}
+        onClick={() => setCurrentTab("completed")}
+        type="button"
+        style={{
+          background: "none",
+          border: "none",
+          padding: 0,
+          marginRight: 32,
+          fontSize: 13,
+          fontWeight: 500,
+          color: currentTab === "completed" ? "#26b6d4" : "#888",
+          cursor: "pointer",
+        }}
       >
         ĐÃ HOÀN THÀNH
-      </NavLink>
-      <NavLink
-        to="/uncompleted"
-        className={({ isActive }) => (isActive ? "active" : "")}
+      </button>
+      <button
+        className={currentTab === "uncompleted" ? "active" : ""}
+        onClick={() => setCurrentTab("uncompleted")}
+        type="button"
+        style={{
+          background: "none",
+          border: "none",
+          padding: 0,
+          fontSize: 13,
+          fontWeight: 500,
+          color: currentTab === "uncompleted" ? "#26b6d4" : "#888",
+          cursor: "pointer",
+        }}
       >
         CHƯA HOÀN THÀNH
-      </NavLink>
+      </button>
     </div>
   );
 }
